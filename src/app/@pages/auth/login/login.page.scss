@@ -1,0 +1,51 @@
+.auth-form {
+  width: 90%;
+margin: 30px 5%;
+  .app-info {
+    text-align: center;
+    margin-bottom: 15px;
+
+    .app-logo {
+      width: 60%;
+      margin: 0 auto 5px;
+    }
+
+    .app-name {
+      font-size: 25px;
+      line-height: 35px;
+      margin: 15px 0 7.5px;
+      color: #520B0F;
+    }
+
+    .app-desc {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--ion-color-primary);
+
+      p {
+        margin: 0;
+        line-height: 19px;
+      }
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 30px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .forgot {
+    margin-top: 40px;
+    font-size: 17px;
+    text-align: right;
+    a {
+      color: #777;
+    }
+  }
+}

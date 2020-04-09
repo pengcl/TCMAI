@@ -1,0 +1,23 @@
+.statement {
+  margin: 20px;
+  border: 1px solid #ededed;
+  padding: 15px;
+  border-radius: 6px;
+
+  h2 {
+    margin: 0;
+  }
+
+  h3 {
+    margin: 10px 0 20px;
+    font-size: 13px;
+    color: #666;
+    font-weight: bold;
+  }
+
+  p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.8;
+  }
+}

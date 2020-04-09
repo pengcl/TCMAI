@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+    <ion-header [translucent]="false">
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref="/pages/index" text=""></ion-back-button>
+            </ion-buttons>
+            <ion-title>
+                COVID19TEST
+            </ion-title>
+            <ion-buttons slot="primary">
+                <ion-button [routerLink]="['/pages/index']">
+                    <ion-icon slot="icon-only" name="menu"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+    <div *ngIf="picture" id="poster">
+        <img class="poster" [src]="picture">
+    </div>
+</ion-content>
+
+

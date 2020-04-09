@@ -1,0 +1,42 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-title>
+      COVID19TEST
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button [routerLink]="['/pages/customer/finder']">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card class="banner">
+    <ion-card-header>
+      <ion-card-title>
+        Selamat Datang di Situs<br>
+        Assesment Mandiri Covid-19
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Silahkan Coba Test Berikut untuk Mengetahui Apakah Kamu Termasuk Yang Harus Menjalani Perawatan Medis atau Tidak
+    </ion-card-content>
+    <mat-card-actions>
+      <button mat-flat-button [routerLink]="['/pages/agreements']">Lakukan Test</button>
+    </mat-card-actions>
+  </ion-card>
+  <ion-card class="nav">
+    <ion-card-header>
+      <ion-card-subtitle>Call Center</ion-card-subtitle>
+      <ion-card-title><ion-icon name="call"></ion-icon>119</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card class="nav">
+    <ion-card-header>
+      <ion-card-subtitle>Bantuan Medis</ion-card-subtitle>
+      <ion-card-title><ion-icon name="call"></ion-icon>+62 81XXXX</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>

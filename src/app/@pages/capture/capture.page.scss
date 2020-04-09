@@ -1,0 +1,25 @@
+ion-content {
+  --background: transparent;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: auto !important;
+    height: calc(100% + var(--ion-safe-area-top) + var(--ion-safe-area-bottom));
+    transform: translate3d(-50%, -50%, 0);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+
+  .box {
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -100px;
+    margin-left: -100px;
+  }
+}

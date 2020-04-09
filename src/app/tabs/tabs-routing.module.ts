@@ -1,58 +1,87 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {TabsPage} from './tabs.page';
+import {CaptureGuard} from '../@pages/capture/capture.guard';
 
 const routes: Routes = [
-  {
-    path: 'tabs',
-    component: TabsPage,
-    children: [
-      {
-        path: 'tab1',
+    {
+        path: 'pages',
+        component: TabsPage,
         children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
-          }
+            {
+                path: 'auth',
+                data: {index: 0},
+                children: [
+                    {
+                        path: '',
+                        loadChildren: () =>
+                            import('../@pages/auth/auth.module').then(m => m.AuthPageModule)
+                    }
+                ]
+            },
+            {
+                path: 'index',
+                data: {index: 1},
+                children: [
+                    {
+                        path: '',
+                        loadChildren: () =>
+                            import('../@pages/index/index.module').then(m => m.IndexPageModule)
+                    }
+                ]
+            },
+            {
+                path: 'agreements',
+                data: {index: 2},
+                children: [
+                    {
+                        path: '',
+                        loadChildren: () =>
+                            import('../@pages/agreements/agreements.module').then(m => m.AgreementsPageModule)
+                    }
+                ]
+            },
+            {
+                path: 'capture',
+                data: {index: 3},
+                children: [
+                    {
+                        path: '',
+                        loadChildren: () =>
+                            import('../@pages/capture/capture.module').then(m => m.CapturePageModule)
+                    }
+                ]
+            },
+            {
+                path: 'picture',
+                data: {index: 4},
+                canActivate: [CaptureGuard],
+                children: [
+                    {
+                        path: '',
+                        loadChildren: () =>
+                            import('../@pages/picture/picture.module').then(m => m.PicturePageModule)
+                    }
+                ]
+            },
+            {
+                path: '',
+                redirectTo: '/pages/capture',
+                pathMatch: 'full'
+            }
         ]
-      },
-      {
-        path: 'tab2',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-          }
-        ]
-      },
-      {
-        path: 'tab3',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
-          }
-        ]
-      },
-      {
+    },
+    {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/pages/capture',
         pathMatch: 'full'
-      }
-    ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
-  }
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
+    providers: [CaptureGuard]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule {
+}

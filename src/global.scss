@@ -10,6 +10,7 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
@@ -24,3 +25,20 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+@import "scss/ion-header";
+@import "scss/ion-card";
+@import "scss/mat-button";
+
+html {
+  background: transparent;
+}
+
+body {
+  background: transparent;
+}
+
+ion-content {
+  --background: #f8f8f8;
+}
+

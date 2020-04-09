@@ -1,0 +1,19 @@
+ion-card {
+  &.banner {
+    --background: var(--ion-color-primary);
+    --color: #fff;
+    ion-card-header {
+      ion-card-title {
+        --color: #fff;
+      }
+    }
+  }
+  &.nav {
+    ion-card-title {
+      --color: var(--ion-color-primary);
+      ion-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}
