@@ -15,8 +15,7 @@ export class TestGuard implements CanActivate, CanActivateChild, CanLoad {
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-
-        const url: string = state.url;
+        console.log(parseInt(route.params.index, 10));
         return this.checkAnswer(parseInt(route.params.index, 10));
     }
 
@@ -25,23 +24,13 @@ export class TestGuard implements CanActivate, CanActivateChild, CanLoad {
     }
 
     canLoad(route: Route): boolean {
-        console.log(route);
         return this.checkAnswer(route);
     }
 
     checkAnswer(index): boolean {
-        console.log(typeof index);
-        if (!index) {
+        if (this.testSvc.isAnswered(index)) {
             return true;
-        } else {
-          if (this.testSvc.isAnswered) {
-            return true;
-          }
         }
-
-        /*this.testSvc.redirectUrl = url;
-
-        this.router.navigateByUrl(this.testSvc.redirectUrl);*/
 
         return false;
     }

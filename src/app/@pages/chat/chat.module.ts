@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ThemeModule} from '../../@theme/theme.module';
-import {CapturePage} from './capture.page';
+import {ChatPage} from './chat.page';
 
 @NgModule({
   imports: [
@@ -12,9 +12,9 @@ import {CapturePage} from './capture.page';
     CommonModule,
     FormsModule,
     ThemeModule,
-    RouterModule.forChild([{path: '', component: CapturePage}])
+    RouterModule.forChild([{path: '', component: ChatPage}])
   ],
-  declarations: [CapturePage]
+  declarations: [ChatPage]
 })
-export class CapturePageModule {
+export class ChatPageModule {
 }

@@ -8,7 +8,6 @@ import {StorageService} from '../../../@core/core/utils/storage.service';
 @Injectable({providedIn: 'root'})
 export class TestService {
     public redirectUrl: string;
-    private answerStatus = new Subject<boolean>();
 
     constructor(@Inject('PREFIX_URL') private PREFIX_URL, private http: HttpClient,
                 private route: ActivatedRoute,
@@ -47,22 +46,29 @@ export class TestService {
         }
     }
 
-    currentAnswer(index?) {
-        const answer = JSON.parse(this.storage.get('answer'));
-        return typeof index === 'number' ? answer[index] : answer;
+    currentAnswer(index) {
+        const answers = JSON.parse(this.storage.get('answer'));
+        let i = 0;
+        let answer = false;
+        for (const key in answers) {
+            if (answers[key + '']) {
+                if (index === i) {
+                    answer = true;
+                }
+                i = i + 1;
+            }
+        }
+        return answer;
     }
 
-    isAnswered(index?): boolean {
-        this.answerStatus.next(!!this.currentAnswer(index));
-        return !!this.currentAnswer(index);
-    }
-
-    getAnswerStatus(): Observable<boolean> {
-        return this.answerStatus.asObservable();
+    isAnswered(index): boolean {
+        if (index === 0) {
+            return true;
+        }
+        return !!this.currentAnswer(index - 1);
     }
 
     updateAnswerStatus(answer) {
         this.storage.set('answer', JSON.stringify(answer));
-        this.answerStatus.next(this.isAnswered());
     }
 }

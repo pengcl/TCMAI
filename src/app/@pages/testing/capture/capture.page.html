@@ -1,0 +1,48 @@
+<ion-content #boundary [fullscreen]="true">
+    <ion-header [translucent]="false">
+        <ion-toolbar>
+            <ion-title>CAPTURE YOUR TONGUE</ion-title>
+        </ion-toolbar>
+        <ion-toolbar>
+            <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedType">
+                <ion-segment-button value="test">
+                    <ion-label>Test</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="history">
+                    <ion-label>History</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </ion-header>
+    <img class="picture" *ngIf="picture" [src]="picture">
+    <div class="box">
+        <span class="lt"></span>
+        <span class="rt"></span>
+        <span class="center"></span>
+        <span class="lb"></span>
+        <span class="rb"></span>
+    </div>
+    <div class="draggable" cdkDragBoundary=".boundary" (cdkDragEnded)="move($event)" cdkDrag #drag>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+    </div>
+    <ion-grid class="controls">
+        <ion-row>
+            <ion-col size="4">
+                <img (click)="retry()" class="back" src="/assets/icons/back@3x.png">
+            </ion-col>
+            <ion-col size="4">
+                <img (click)="capture()" class="capture" src="/assets/icons/capture@3x.png">
+            </ion-col>
+            <ion-col size="4">
+                <img (click)="switch()" class="switch" src="/assets/icons/switch@3x.png">
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div (click)="retry()" class="actions actions-left"><img src="assets/icons/right@3x.png"> Retry</div>
+    <div class="actions actions-right">Submit <img src="assets/icons/right@3x.png"></div>
+</ion-content>
+
+

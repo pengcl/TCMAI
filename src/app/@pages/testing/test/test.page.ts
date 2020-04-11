@@ -43,12 +43,26 @@ export class TestingTestPage {
                             new FormControl('',
                                 [Validators.required]));
                     }
-                    this.form.valueChanges.subscribe(() => {
-                        this.testSvc.updateAnswerStatus(this.form.value);
-                    });
+                });
+                this.setValue();
+                this.form.valueChanges.subscribe(() => {
+                    this.testSvc.updateAnswerStatus(this.form.value);
                 });
             }
         });
+    }
+
+    setValue() {
+        const answer = this.testSvc.answer();
+        console.log(this.form.value);
+        if (answer) {
+            this.answer = answer;
+            for (const key in answer) {
+                if (answer[key]) {
+                    this.form.get(key).setValue(answer[key]);
+                }
+            }
+        }
     }
 
     ionViewDidLeave() {
@@ -86,6 +100,7 @@ export class TestingTestPage {
         if (this.form.get(this.questions[this.index].id).invalid) {
             return false;
         }
+        console.log(e);
         if (e) {
             this.router.navigate(['/pages/testing/capture']);
         } else {
