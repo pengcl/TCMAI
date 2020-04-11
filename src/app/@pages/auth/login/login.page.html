@@ -1,81 +1,24 @@
-<ion-header [translucent]="false">
-    <ion-toolbar>
-        <ion-title>
-            COVID19TEST
-        </ion-title>
-        <ion-buttons slot="primary">
-            <ion-button [routerLink]="['/pages/customer/finder']">
-                <ion-icon slot="icon-only" name="menu"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
 <ion-content>
+    <div class="header">
+        <h1>TIM AI</h1>
+        <h2>self assessment application</h2>
+    </div>
     <form [formGroup]="form" class="auth-form">
-        <div class="app-info">
-            <div class="app-logo">
-                <img src="/assets/logo.png">
-            </div>
-            <div class="app-desc">
-                <p>MariLakukan Test Berikut</p>
-            </div>
-        </div>
+        <div class="app-info">LOGIN</div>
         <mat-form-field>
-            <mat-label>Name</mat-label>
-            <input type="text" formControlName="name" matInput required>
-            <mat-error *ngIf="form.get('age').hasError('required')">Please input your name</mat-error>
+            <mat-label>Username</mat-label>
+            <input type="text" formControlName="account" matInput>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Gender</mat-label>
-            <mat-select formControlName="sex" required>
-                <mat-option>--</mat-option>
-                <mat-option [value]="'男'">
-                    Male
-                </mat-option>
-                <mat-option [value]="'女'">
-                    Female
-                </mat-option>
-            </mat-select>
-            <mat-error *ngIf="form.get('sex').hasError('required')">Please choose an value</mat-error>
+            <mat-label>Password</mat-label>
+            <input [type]="visibility ? 'text' : 'password'" formControlName="pwd" matInput>
+            <button mat-button matSuffix mat-icon-button>
+                <mat-icon (click)="visibility = true" *ngIf="!visibility">visibility_off</mat-icon>
+                <mat-icon (click)="visibility = false" *ngIf="visibility">visibility</mat-icon>
+            </button>
         </mat-form-field>
-        <mat-form-field>
-            <mat-label>Ages</mat-label>
-            <input type="text" formControlName="age" matInput required>
-            <mat-error *ngIf="form.get('age').hasError('required')">Please input a value</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input type="tel" id="phone" formControlName="phone" matInput required>
-            <mat-error *ngIf="form.get('phone').hasError('required')">Please input a phone number</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>E-mail</mat-label>
-            <input type="email" formControlName="email" matInput>
-            <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
-                Please enter a valid email address
-            </mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Location</mat-label>
-            <input type="text" [value]="form.get('location').invalid ? 'GPS Unactivated' : 'GPS Activated'" [disabled]="form.get('location').invalid" readonly matInput>
-            <mat-error *ngIf="form.get('location').hasError('required')">Please turn on your GPS</mat-error>
-        </mat-form-field>
+        <p class="forgot"><a routerLink="/pages/auth/forgot" href="javascript:;">Forgot your password ?</a></p>
+        <button class="login" (click)="login()" type="button">LOGIN</button>
+        <p class="register">Don't have an account? <a routerLink="/pages/auth/register" href="javascript:;">Sign Up</a> here</p>
     </form>
 </ion-content>
-<ion-footer mode="ios">
-    <ion-toolbar>
-        <ion-grid class="ion-no-padding">
-            <ion-row>
-                <ion-col>
-                    <ion-button color="primary" router-direction="back" routerLink="/pages/agreements" expand="full">
-                        <ion-icon name="chevron-back"></ion-icon> Kembail
-                    </ion-button>
-                </ion-col>
-                <ion-col>
-                    <ion-button (click)="login()" color="primary" expand="full">
-                        Lanjut <ion-icon name="chevron-forward"></ion-icon>
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-        </ion-grid>
-    </ion-toolbar>
-</ion-footer>

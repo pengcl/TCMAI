@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Observable, Subject} from 'rxjs';
 
-import {StorageService} from '../../@core/core/utils/storage.service';
+import {StorageService} from '../../../@core/core/utils/storage.service';
 
 @Injectable({providedIn: 'root'})
 export class CaptureService {

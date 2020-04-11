@@ -14,6 +14,16 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'register',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+            import('./register/register.module').then(m => m.AuthRegisterPageModule)
+      }
+    ]
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

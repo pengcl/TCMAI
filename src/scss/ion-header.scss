@@ -1,7 +1,11 @@
 ion-header {
-  ion-title {
-    --color: var(--ion-color-primary);
-    font-weight: bold;
-    letter-spacing: -1px;
+  ion-toolbar {
+    ion-title {
+      --color: var(--ion-color-primary);
+      font-weight: bold;
+    }
+    &:last-of-type {
+      --border-width: 0 !important
+    }
   }
 }

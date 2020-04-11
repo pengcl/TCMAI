@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions} from '@ionic-native/camera-preview/ngx';
+import {TabsService} from '../../../tabs/tabs.service';
 import {CaptureService} from './capture.service';
 
 const cameraPreviewOpts: CameraPreviewOptions = {
@@ -23,18 +24,31 @@ const pictureOpts: CameraPreviewPictureOptions = {
 };
 
 @Component({
-    selector: 'app-capture',
+    selector: 'app-testing-capture',
     templateUrl: 'capture.page.html',
-    styleUrls: ['capture.page.scss']
+    styleUrls: ['../testing.page.scss', 'capture.page.scss']
 })
-export class CapturePage {
+export class TestingCapturePage {
+    selectedType = 'test';
     picture;
+    position = {
+        x: 0,
+        y: 0
+    };
 
-    constructor(private router: Router, private cameraPreview: CameraPreview, private captureSvc: CaptureService) {
+    constructor(private router: Router,
+                private cameraPreview: CameraPreview,
+                private tabsSvc: TabsService,
+                private captureSvc: CaptureService) {
     }
 
     ionViewDidEnter() {
+        this.tabsSvc.set(false);
         this.start();
+    }
+
+    segmentChanged(e) {
+        this.selectedType = e.detail.value;
     }
 
     start() {
@@ -45,8 +59,13 @@ export class CapturePage {
         });
     }
 
-    take() {
-        this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
+    // Switch camera
+    switch() {
+        this.cameraPreview.switchCamera().then();
+    }
+
+    capture() {
+        this.cameraPreview.takeSnapshot(pictureOpts).then((imageData) => {
             this.picture = 'data:image/jpeg;base64,' + imageData;
             alert(this.picture);
             this.captureSvc.updatePictureStatus(this.picture);
@@ -57,8 +76,22 @@ export class CapturePage {
         });
     }
 
+    retry() {
+        this.picture = null;
+    }
+
     stop() {
         this.cameraPreview.stopCamera().then();
+    }
+
+    move(e) {
+        let transform = e.source.element.nativeElement.style.transform;
+        transform = transform.slice(transform.indexOf('(') + 1);
+        transform = transform.slice(0, transform.indexOf(')'));
+        transform = transform.split(',');
+        this.position.x = parseInt(transform[0], 10);
+        this.position.y = parseInt(transform[1], 10);
+        console.log(this.position);
     }
 
     ionViewDidLeave() {

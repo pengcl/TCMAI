@@ -10,7 +10,6 @@ import {
 } from '@angular/router';
 import {CaptureService} from './capture.service';
 
-
 @Injectable()
 export class CaptureGuard implements CanActivate, CanActivateChild, CanLoad {
   constructor(private captureSvc: CaptureService,

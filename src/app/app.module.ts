@@ -22,6 +22,7 @@ import {AppComponent} from './app.component';
         BrowserModule,
         BrowserAnimationsModule,
         IonicModule.forRoot({
+            mode: 'ios',
             hardwareBackButton: false
         }),
         AppRoutingModule,

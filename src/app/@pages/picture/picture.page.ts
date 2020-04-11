@@ -1,5 +1,5 @@
-import {Component, Inject} from '@angular/core';
-import {CaptureService} from '../capture/capture.service';
+import {Component} from '@angular/core';
+import {CaptureService} from '../testing/capture/capture.service';
 
 @Component({
     selector: 'app-picture',

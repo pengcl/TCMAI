@@ -32,6 +32,8 @@ import {
     MatSelectModule
 } from '@angular/material';
 
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
 const MATERIAL_PART = [
     MatButtonModule,
     MatFormFieldModule,
@@ -49,7 +51,8 @@ const MATERIAL_PART = [
     MatRadioModule,
     MatTooltipModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    DragDropModule
 ];
 
 @NgModule({

@@ -1,15 +1,16 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {TabsPage} from './tabs.page';
-import {CaptureGuard} from '../@pages/capture/capture.guard';
+import {AuthGuard} from '../@pages/auth/auth.guard';
+import {CaptureGuard} from '../@pages/testing/capture/capture.guard';
 
 const routes: Routes = [
     {
-        path: 'pages',
+        path: '',
         component: TabsPage,
         children: [
             {
-                path: 'auth',
+                path: 'pages/auth',
                 data: {index: 0},
                 children: [
                     {
@@ -20,7 +21,20 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'index',
+                path: 'pages/testing',
+                canActivate: [AuthGuard],
+                data: {index: 0},
+                children: [
+                    {
+                        path: '',
+                        loadChildren: () =>
+                            import('../@pages/testing/testing.module').then(m => m.TestingPageModule)
+                    }
+                ]
+            },
+            {
+                path: 'pages/index',
+                canActivate: [AuthGuard],
                 data: {index: 1},
                 children: [
                     {
@@ -31,7 +45,8 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'agreements',
+                path: 'pages/agreements',
+                canActivate: [AuthGuard],
                 data: {index: 2},
                 children: [
                     {
@@ -42,20 +57,9 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'capture',
-                data: {index: 3},
-                children: [
-                    {
-                        path: '',
-                        loadChildren: () =>
-                            import('../@pages/capture/capture.module').then(m => m.CapturePageModule)
-                    }
-                ]
-            },
-            {
-                path: 'picture',
+                path: 'pages/picture',
                 data: {index: 4},
-                canActivate: [CaptureGuard],
+                canActivate: [AuthGuard, CaptureGuard],
                 children: [
                     {
                         path: '',
@@ -66,14 +70,14 @@ const routes: Routes = [
             },
             {
                 path: '',
-                redirectTo: '/pages/capture',
+                redirectTo: '/pages/index',
                 pathMatch: 'full'
             }
         ]
     },
     {
         path: '',
-        redirectTo: '/pages/capture',
+        redirectTo: '/pages/index',
         pathMatch: 'full'
     }
 ];
@@ -81,7 +85,7 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-    providers: [CaptureGuard]
+    providers: [AuthGuard, CaptureGuard]
 })
 export class TabsPageRoutingModule {
 }

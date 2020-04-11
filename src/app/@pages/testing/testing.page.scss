@@ -1,0 +1,119 @@
+ion-content {
+  .header {
+    position: relative;
+    overflow: unset;
+
+    h1 {
+      position: absolute;
+      height: 120px;
+      width: 120px;
+      left: 20px;
+      top: 20px;
+      margin: 0;
+      padding: 0;
+
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    h2 {
+      position: absolute;
+      top: 70px;
+      margin: 0;
+      padding: 0 0 0 25px;
+      font-size: 15px;
+    }
+
+    ion-toolbar {
+      --background: transparent;
+      position: absolute;
+      bottom: 0;
+      transform: translate3d(0, 50%, 0);
+
+      ion-segment {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+        font-size: 15px;
+        border-radius: 21px;
+
+        ion-segment-button {
+          margin: 3px 4px 3px 4px;
+          --padding-bottom: 7px;
+          --padding-end: 30px;
+          --padding-start: 30px;
+          --padding-top: 7px;
+          --border-radius: 18px;
+        }
+      }
+    }
+  }
+}
+
+.auth-form, .test-form {
+  width: 90%;
+  margin: 60px 5% calc(90px + var(--ion-safe-area-bottom));;
+
+  .app-info {
+    margin-bottom: 15px;
+
+    .app-desc {
+      font-size: 18px;
+      font-weight: bold;
+      color: var(--ion-color-primary);
+
+      p {
+        margin: 0;
+        line-height: 19px;
+      }
+    }
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.actions {
+  position: fixed;
+  bottom: calc(30px + var(--ion-safe-area-bottom));
+  box-sizing: border-box;
+  height: 34px;
+  font-size: 15px;
+  line-height: 24px;
+  background-image: linear-gradient(-90deg, #3C9AD7, #17D1FE);
+  font-weight: bold;
+  color: #fff;
+
+  img {
+    position: absolute;
+    display: block;
+    width: 15px;
+    top: 9px;
+  }
+
+  &.actions-left {
+    border-radius: 0 17px 17px 0;
+    padding: 5px 15px 5px 40px;
+    left: 0;
+
+    img {
+      left: 15px;
+      transform: rotate(180deg);
+    }
+  }
+
+  &.actions-right {
+    border-radius: 17px 0 0 17px;
+    padding: 5px 40px 5px 15px;
+    right: 0;
+
+    img {
+      right: 15px;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.5;
+  }
+}

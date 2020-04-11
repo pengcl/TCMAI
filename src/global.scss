@@ -29,6 +29,8 @@
 @import "scss/ion-header";
 @import "scss/ion-card";
 @import "scss/mat-button";
+@import "scss/mat-form-field";
+@import "scss/ion-segment";
 
 html {
   background: transparent;
@@ -38,7 +40,30 @@ body {
   background: transparent;
 }
 
+a {
+  text-decoration: none;
+}
+
+button {
+  &[disabled] {
+    opacity: 0.5;
+  }
+}
+
 ion-content {
-  --background: #f8f8f8;
+  --background: #fff;
+
+  & > .header {
+    width: 100%;
+    height: 167px;
+    overflow: hidden;
+    text-align: center;
+    color: #fff;
+    background-image: linear-gradient(-90deg, #3C9AD7, #17D1FE);
+  }
+}
+
+* {
+  outline: none;
 }
 

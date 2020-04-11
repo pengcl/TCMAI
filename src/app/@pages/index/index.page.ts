@@ -1,20 +1,18 @@
-import {Component, Inject} from '@angular/core';
-
-import {DatePipe} from '@angular/common';
-import {MatTooltip} from '@angular/material';
+import {Component} from '@angular/core';
+import {TabsService} from '../../tabs/tabs.service';
 
 @Component({
     selector: 'app-index',
     templateUrl: 'index.page.html',
-    styleUrls: ['index.page.scss'],
-    providers: [DatePipe, MatTooltip]
+    styleUrls: ['index.page.scss']
 })
 export class IndexPage {
 
-    constructor(@Inject('PREFIX_URL') private PREFIX_URL) {
+    constructor(private tabsSvc: TabsService) {
     }
 
     ionViewDidEnter() {
+        this.tabsSvc.set(true);
     }
 
     ionViewDidLeave() {

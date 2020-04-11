@@ -1,0 +1,32 @@
+mat-form-field.mat-form-field {
+  color: #666;
+  mat-icon {
+    color: #17D1FE;
+  }
+  .mat-form-field-underline {
+    background-color: #17D1FE !important;
+  }
+  .mat-form-field-label {
+    color: #17D1FE;
+  }
+  .mat-form-field-ripple {
+    background-color: #17D1FE;
+  }
+
+  &.mat-focused {
+    .mat-form-field-label {
+      color: #17D1FE;
+    }
+    .mat-form-field-ripple {
+      background-color: #17D1FE;
+      box-shadow: 0 3px 4px #17D1FE;
+    }
+  }
+  &.mat-form-field-invalid {
+    mat-icon {
+      color: #f44336;
+    }
+  }
+}
+
+/*.mat-form-field.mat-form-field-invalid .mat-form-field-ripple,*/

@@ -1,42 +1,48 @@
-<ion-header [translucent]="false">
-  <ion-toolbar>
-    <ion-title>
-      COVID19TEST
-    </ion-title>
-    <ion-buttons slot="primary">
-      <ion-button [routerLink]="['/pages/customer/finder']">
-        <ion-icon slot="icon-only" name="menu"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-card class="banner">
-    <ion-card-header>
-      <ion-card-title>
-        Selamat Datang di Situs<br>
-        Assesment Mandiri Covid-19
-      </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-      Silahkan Coba Test Berikut untuk Mengetahui Apakah Kamu Termasuk Yang Harus Menjalani Perawatan Medis atau Tidak
-    </ion-card-content>
-    <mat-card-actions>
-      <button mat-flat-button [routerLink]="['/pages/agreements']">Lakukan Test</button>
-    </mat-card-actions>
-  </ion-card>
-  <ion-card class="nav">
-    <ion-card-header>
-      <ion-card-subtitle>Call Center</ion-card-subtitle>
-      <ion-card-title><ion-icon name="call"></ion-icon>119</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-  <ion-card class="nav">
-    <ion-card-header>
-      <ion-card-subtitle>Bantuan Medis</ion-card-subtitle>
-      <ion-card-title><ion-icon name="call"></ion-icon>+62 81XXXX</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+    <div class="header">
+        <img class="logo" src="/assets/logo@3x.png">
+    </div>
+    <ion-grid class="menu-list">
+        <ion-row>
+            <ion-col size="6">
+                <div routerLink="/pages/testing" class="menu-item-left menu-item">
+                    <ion-img src="/assets/icons/test@3x.png"></ion-img>
+                    <ion-text>covid test</ion-text>
+                </div>
+            </ion-col>
+            <ion-col size="6">
+                <div class="menu-item-right menu-item">
+                    <ion-img src="/assets/icons/consultation@3x.png"></ion-img>
+                    <ion-text>consultation</ion-text>
+                </div>
+            </ion-col>
+            <ion-col size="6">
+                <div class="menu-item-left menu-item">
+                    <ion-img src="/assets/icons/health@3x.png"></ion-img>
+                    <ion-text>health center</ion-text>
+                </div>
+            </ion-col>
+            <ion-col size="6">
+                <div class="menu-item-right menu-item">
+                    <ion-img src="/assets/icons/medicine@3x.png"></ion-img>
+                    <ion-text>medicine info</ion-text>
+                </div>
+            </ion-col>
+            <ion-col size="6">
+                <div class="menu-item-left menu-item">
+                    <ion-img src="/assets/icons/news@3x.png"></ion-img>
+                    <ion-text>news feed</ion-text>
+                </div>
+            </ion-col>
+            <ion-col size="6">
+                <div class="menu-item-right menu-item">
+                    <ion-img src="/assets/icons/faq@3x.png"></ion-img>
+                    <ion-text>faq</ion-text>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <span class="notifications" matBadge="15" matBadgeColor="warn">
+        <img src="/assets/icons/notification@3x.png">
+    </span>
 </ion-content>

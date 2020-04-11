@@ -1,0 +1,13 @@
+ion-segment {
+  border-radius: 16px;
+  --background: #fff;
+
+  ion-segment-button {
+    --indicator-color: #3C9AD7;
+    --border-radius: 14px;
+
+    &.segment-button-checked {
+      --color-checked: #fff;
+    }
+  }
+}

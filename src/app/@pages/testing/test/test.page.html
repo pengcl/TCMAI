@@ -1,0 +1,45 @@
+<ion-content>
+    <div class="header">
+        <h1><img src="/assets/icons/virus@3x.png"></h1>
+        <h2>Covid 19 - self assessment test</h2>
+        <ion-toolbar>
+            <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedType">
+                <ion-segment-button value="test">
+                    <ion-label>Test</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="history">
+                    <ion-label>History</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </div>
+    <form *ngIf="questions.length > 0" [formGroup]="form" class="test-form">
+        <ng-container *ngFor="let item of questions;let i = index">
+            <ion-list *ngIf="index === i">
+                <ion-radio-group mode="md" *ngIf="item.type === 0" [formControlName]="item.id" value="">
+                    <ion-list-header>
+                        <p>{{item.name}}</p>
+                    </ion-list-header>
+                    <ion-item lines="none" *ngFor="let answer of item.itemList">
+                        <ion-label>{{answer.name}}</ion-label>
+                        <ion-radio slot="start" [value]="answer.value"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+                <ng-container *ngIf="item.type === 1">
+                    <ion-item *ngFor="let answer of item.itemList" lines="none">
+                        <ion-checkbox [name]="item.id" slot="start" (ionChange)="change(item,answer)"
+                                      color="secondary"
+                                      style="--background-checked:#1f95ff !important;--border-color-checked:#1f95ff !important;">
+                        </ion-checkbox>
+                        <ion-label>{{answer.name}}</ion-label>
+                    </ion-item>
+                </ng-container>
+            </ion-list>
+        </ng-container>
+        <!--<ion-button color="primary" (click)="next(index === questions.length-1)" [disabled]="form.get(questions[index].id).invalid">
+            {{index === questions.length-1 ? 'Submit' : 'Next'}}
+        </ion-button>-->
+    </form>
+    <div *ngIf="questions.length > 0" (click)="next(index === questions.length-1)" [class.disabled]="form.get(questions[index].id).invalid" class="actions actions-right">Next <img
+            src="assets/icons/right@3x.png"></div>
+</ion-content>

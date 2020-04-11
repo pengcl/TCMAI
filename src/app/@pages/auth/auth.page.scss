@@ -1,0 +1,72 @@
+.header {
+  text-align: center;
+  border-radius: 0 0 25px 25px;
+
+  h1 {
+    font-size: 47px;
+    font-weight: bold;
+    margin: 40px 0 10px 0;
+  }
+
+  h2 {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 10px 0 10px 0;
+  }
+}
+
+.auth-form {
+  width: 90%;
+  margin: -30px 5% 30px;
+  padding: 30px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  border-radius: 25px;
+  background: #fff;
+
+  .app-info {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 23px;
+    color: #3C9AD7;
+    font-weight: bold;
+  }
+
+  mat-form-field {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .forgot {
+    margin-top: 5px;
+    font-size: 13px;
+    text-align: right;
+
+    a {
+      color: #17D1FE;
+      font-weight: bold;
+    }
+  }
+
+  .register, .login {
+    text-align: center;
+    font-size: 13px;
+    color: #3C9AD7;
+
+    a {
+      font-weight: bold;
+      color: #3C9AD7;
+    }
+  }
+
+  button.login {
+    width: 156px;
+    height: 56px;
+    border-radius: 28px;
+    background-image: linear-gradient(to left, #3C9AD7, #17D1FE);
+    color: #fff;
+    font-size: 20px;
+    display: block;
+    font-weight: bold;
+    margin: 35px auto 30px auto;
+  }
+}

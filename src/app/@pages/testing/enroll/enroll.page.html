@@ -1,0 +1,99 @@
+<ion-content>
+    <div class="header">
+        <h1><img src="/assets/icons/virus@3x.png"></h1>
+        <h2>Covid 19 - self assessment test</h2>
+        <ion-toolbar>
+            <ion-segment (ionChange)="segmentChanged($event)" [value]="selectedType">
+                <ion-segment-button value="test">
+                    <ion-label>Test</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="history">
+                    <ion-label>History</ion-label>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </div>
+    <form [formGroup]="form" class="auth-form">
+        <div class="app-info">
+            <div class="app-desc">
+                <p>INFORMATION NEEDED</p>
+            </div>
+        </div>
+        <mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <mat-icon matPrefix style="margin-right: 10px;">person</mat-icon>
+            <input type="text" formControlName="name" matInput required>
+            <mat-error *ngIf="form.get('age').hasError('required')">Please input your name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Sex</mat-label>
+            <mat-icon matPrefix style="margin-right: 10px;">face</mat-icon>
+            <mat-select formControlName="sex" required>
+                <mat-option>--</mat-option>
+                <mat-option [value]="'男'">
+                    Male
+                </mat-option>
+                <mat-option [value]="'女'">
+                    Female
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.get('sex').hasError('required')">Please choose an value</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Ages</mat-label>
+            <mat-icon matPrefix style="margin-right: 10px;">event</mat-icon>
+            <input type="text" formControlName="age" matInput required>
+            <span matSuffix>Years Old</span>
+            <mat-error *ngIf="form.get('age').hasError('required')">Please input a value</mat-error>
+        </mat-form-field>
+        <ion-grid class="ion-no-padding">
+            <ion-row>
+                <ion-col size="5" style="padding-right: 5px;">
+                    <mat-form-field (click)="picker()">
+                        <mat-label>Area code</mat-label>
+                        <mat-icon matPrefix style="margin-right: 10px;">phone</mat-icon>
+                        <input type="tel" formControlName="areaCode" matInput readonly required>
+                        <button mat-button matSuffix mat-icon-button>
+                            <mat-icon>arrow_right</mat-icon>
+                        </button>
+                        <mat-error *ngIf="form.get('phone').hasError('required')">Please input a phone number</mat-error>
+                    </mat-form-field>
+                </ion-col>
+                <ion-col size="7" style="padding-left: 5px;">
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input type="tel" formControlName="phone" matInput required>
+                        <mat-error *ngIf="form.get('phone').hasError('required')">Please input a phone number</mat-error>
+                    </mat-form-field>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <mat-form-field>
+            <mat-label>E-mail</mat-label>
+            <mat-icon matPrefix style="margin-right: 10px;">email</mat-icon>
+            <input type="email" formControlName="email" matInput>
+            <mat-error *ngIf="form.get('email').hasError('email') && !form.get('email').hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+        </mat-form-field>
+    </form>
+    <div (click)="submit()" [class.disabled]="form.invalid" class="actions actions-right">Next <img src="assets/icons/right@3x.png"></div>
+</ion-content>
+<!--<ion-footer mode="ios">
+    <ion-toolbar>
+        <ion-grid class="ion-no-padding">
+            <ion-row>
+                <ion-col>
+                    <ion-button color="primary" router-direction="back" routerLink="/pages/agreements" expand="full">
+                        <ion-icon name="chevron-back"></ion-icon> Kembail
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button (click)="login()" color="primary" expand="full">
+                        Lanjut <ion-icon name="chevron-forward"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>-->

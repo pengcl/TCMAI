@@ -1,6 +1,25 @@
 <ion-tabs>
 
-  <ion-tab-bar [hidden]="true" slot="bottom">
+  <ion-tab-bar [hidden]="!state" slot="bottom">
+    <ion-tab-button [routerLink]="'/pages/index'">
+      <ion-img [src]="'/assets/icons/home@3x.png'"></ion-img>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="'/pages/chat'">
+      <ion-img [src]="'/assets/icons/chat@3x.png'"></ion-img>
+      <ion-label>Chat</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="'/pages/inbox'">
+      <ion-img [src]="'/assets/icons/inbox@3x.png'"></ion-img>
+      <ion-label>Inbox</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button [routerLink]="'/pages/account'">
+      <ion-img [src]="'/assets/icons/account@3x.png'"></ion-img>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
   </ion-tab-bar>
 
 </ion-tabs>

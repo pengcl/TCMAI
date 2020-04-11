@@ -1,0 +1,55 @@
+<ion-content>
+    <div class="header">
+        <h1>TIM AI</h1>
+        <h2>self assessment application</h2>
+    </div>
+    <form [formGroup]="form" class="auth-form">
+        <div class="app-info">LOGIN</div>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input type="text" formControlName="account" matInput>
+            <mat-error *ngIf="form.get('account').hasError('required')">Please input your username</mat-error>
+        </mat-form-field>
+        <ion-grid class="ion-no-padding">
+            <ion-row>
+                <ion-col size="4" style="padding-right: 5px">
+                    <mat-form-field (click)="picker()">
+                        <mat-label>Area Code</mat-label>
+                        <input type="text" formControlName="areaCode" matInput readonly>
+                        <button mat-button matSuffix mat-icon-button>
+                            <mat-icon (click)="visibility = true" *ngIf="!visibility">arrow_right</mat-icon>
+                        </button>
+                        <mat-error *ngIf="form.get('areaCode').hasError('required')">Please select country</mat-error>
+                    </mat-form-field>
+                </ion-col>
+                <ion-col size="8">
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input type="text" formControlName="phone" matInput>
+                        <mat-error *ngIf="form.get('phone').hasError('required')">Please input your phone</mat-error>
+                    </mat-form-field>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input [type]="visibility ? 'text' : 'password'" formControlName="pwd" matInput>
+            <button mat-button matSuffix mat-icon-button>
+                <mat-icon (click)="visibility = true" *ngIf="!visibility">visibility_off</mat-icon>
+                <mat-icon (click)="visibility = false" *ngIf="visibility">visibility</mat-icon>
+            </button>
+            <mat-error *ngIf="form.get('pwd').hasError('required')">Please input your password</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Confirm Password</mat-label>
+            <input [type]="visibility ? 'text' : 'password'" formControlName="confirmPwd" matInput>
+            <button mat-button matSuffix mat-icon-button>
+                <mat-icon (click)="visibility = true" *ngIf="!visibility">visibility_off</mat-icon>
+                <mat-icon (click)="visibility = false" *ngIf="visibility">visibility</mat-icon>
+            </button>
+            <mat-error *ngIf="form.get('confirmPwd').hasError('required')">Please confirm your password</mat-error>
+        </mat-form-field>
+        <button [disabled]="form.invalid" class="login" (click)="register()" type="button">SIGN UP</button>
+        <p class="login">Already have an account? <a routerLink="/pages/auth/login" href="javascript:;">Login</a> here</p>
+    </form>
+</ion-content>
